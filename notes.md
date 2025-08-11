@@ -21,16 +21,7 @@ References:
 - VMs virtualize an entire OS including kernel and application layers.
 - Containers share the host OS kernel and isolate only the application layer, resulting in more lightweight and faster startup times.
 
-## 3. Docker Architecture (Buildah related)
-
-- For building container images, tools like **Buildah** provide advanced build capabilities and integrate with OCI container standards.
-- Buildah allows building container images without requiring a daemon, improving scripting and automation workflows.
-
-Tutorials:  
-- https://buildah.io/  
-- https://github.com/containers/buildah/tree/main/docs/tutorials
-
-## 4. Main Docker Commands
+## 3. Main Docker Commands
 
 - `docker help ` – Show help for a specific Docker command.
 - `docker pull ` – Download an image from a registry.
@@ -43,12 +34,12 @@ Tutorials:
 - `docker ps` – List running containers; `-a` shows all containers.
 - `docker stop/start ` – Stop or start a container.
 
-## 5. Docker Debug Commands
+## 4. Docker Debug Commands
 
 - `docker logs ` – View logs; `-f` to follow live output.
 - `docker exec -it  ` – Execute interactive command inside a running container (e.g., `/bin/bash`).
 
-## 6. Developing with Docker (Mongo Example)
+## 5. Developing with Docker (Mongo Example)
 
 - Pull official images:  
   ```bash
@@ -71,7 +62,7 @@ Tutorials:
   ```
 - Access the app and the mongo-express UI via mapped ports on `localhost`.
 
-## 7. Docker Compose (Orchestrating Multiple Containers)
+## 6. Docker Compose (Orchestrating Multiple Containers)
 
 - Use a `docker-compose.yaml` file to define multiple services, networks, and volumes declaratively.
 - Example YAML for mongo, mongo-express, and custom app containers attached to a shared network with environment variables and port bindings.
@@ -86,7 +77,7 @@ Tutorials:
     docker-compose down
     ```
 
-## 8. Dockerfile – Build Your Own Docker Image
+## 7. Dockerfile – Build Your Own Docker Image
 
 **Common Dockerfile instructions:**
 
@@ -117,7 +108,7 @@ extra_hosts:
 
 to enable cross-container networking with host.
 
-## 9. Private Docker Registry (AWS ECR Example)
+## 8. Private Docker Registry (AWS ECR Example)
 
 - Setup AWS CLI and credentials; create IAM user with appropriate permissions.
 - Create a private Elastic Container Registry (ECR) repository in AWS Console.
@@ -140,7 +131,7 @@ docker tag user-profile:1.0.0 .dkr.ecr..amazonaws.com/user-profile:1.0.0
 docker push .dkr.ecr..amazonaws.com/user-profile:1.0.0
 ```
 
-## 10. Deploying Docker Applications on a Server (Using Docker Compose)
+## 9. Deploying Docker Applications on a Server (Using Docker Compose)
 
 - Extend your existing `docker-compose.yaml` with your application service, specifying image, network, ports.
 - Ensure all services share the same Docker network so service discovery using container names works internally.
@@ -150,7 +141,7 @@ docker push .dkr.ecr..amazonaws.com/user-profile:1.0.0
 docker-compose up -d
 ```
 
-## 11. Docker Volumes – Persisting Data
+## 10. Docker Volumes – Persisting Data
 
 - Volumes types:
   - **Host volumes:** Bind-mount host directories  
@@ -162,7 +153,7 @@ docker-compose up -d
 - Named volumes are preferred for persistent container data, easily shared between containers.
 - Define named volumes in docker-compose under `volumes:` and use in services.
 
-## 12. Creating Docker Hosted Repository on Nexus
+## 11. Creating Docker Hosted Repository on Nexus
 
 - In Nexus UI, create a repository of type **docker (hosted)**.
 - Create a specific **role** with `nx-repository-view-docker-docker-hosted-*` privilege and assign it to a Nexus user for `docker login` access.
@@ -182,7 +173,7 @@ docker tag user-profile:1.1.0 :8083/user-profile:1.1.0
 docker push :8083/user-profile:1.1.0
 ```
 
-## 13. Deploying Nexus as Docker Container
+## 12. Deploying Nexus as Docker Container
 
 - Create a DigitalOcean Droplet with sufficient RAM and disk space.
 - Install Docker (`apt update` + `snap install docker`).
@@ -210,7 +201,7 @@ http://:8081
 docker inspect nexus-data
 ```
 
-## 14. Docker Best Practices
+## 13. Docker Best Practices
 
 - Use official base images where possible.
 - Specify explicit image versions to avoid surprises.
